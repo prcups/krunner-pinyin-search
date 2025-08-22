@@ -1,0 +1,16 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "prcups@krgm.moe",
+                "Name": "SignKirigami"
+            }
+        ],
+        "Description": "A plugin to support applications by pinyin with plasma search",
+        "EnabledByDefault": true,
+        "Icon": "planetkde",
+        "License": "LGPL 2.1+",
+        "Name": "krunner_pinyin_search",
+        "Version": "0.1"
+    }
+}
