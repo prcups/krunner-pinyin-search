@@ -19,6 +19,7 @@ bool PinyinMatch::MatchStr(const QStringView &hanziStr, const QStringView &pinyi
         return true;
     if (hanziStr.empty())
         return false;
+    if (hanziStr.startsWith(pinyinStr)) return false;
     auto hanzi = hanziStr[0];
     if (hanzi == pinyinStr[0]) {
         if (MatchStr(hanziStr.sliced(1), pinyinStr.sliced(1)))

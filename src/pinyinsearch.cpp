@@ -49,12 +49,14 @@ void PinyinSearch::match(KRunner::RunnerContext &context)
 
     for (const auto &service : m_services) {
         auto name = service->name();
-        if (matcher.MatchStr(name, term)) {
-            KRunner::QueryMatch match(this);
-            match.setRelevance(0.6);
-            setupMatch(service, match);
-            context.addMatch(match);
-        }
+        for (unsigned int i = 0; i < name.size(); ++i)
+            if (matcher.MatchStr(name.sliced(i), term)) {
+                KRunner::QueryMatch match(this);
+                match.setRelevance(0.6);
+                setupMatch(service, match);
+                context.addMatch(match);
+                break;
+            }
     }
 }
 
