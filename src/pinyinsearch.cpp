@@ -11,7 +11,7 @@ PinyinSearch::PinyinSearch(QObject *parent, const KPluginMetaData &data)
 {
     addSyntax(QStringLiteral(":q:"), i18n("Finds applications whose name is :q: in pinyin"));
     // Disallow short queries
-    setMinLetterCount(3);
+    setMinLetterCount(2);
 
     connect(this, &KRunner::AbstractRunner::prepare, this, [this]() {
         m_matching = true;
@@ -52,7 +52,7 @@ void PinyinSearch::match(KRunner::RunnerContext &context)
         for (unsigned int i = 0; i < name.size(); ++i)
             if (matcher.MatchStr(name.sliced(i), term)) {
                 KRunner::QueryMatch match(this);
-                match.setRelevance(0.6);
+                match.setRelevance(0.8);
                 setupMatch(service, match);
                 context.addMatch(match);
                 break;
